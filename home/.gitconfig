@@ -1,0 +1,38 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = auto
+
+[help]
+    autocorrect = 1
+
+[advice]
+	statusHints = false
+
+[init]
+    templatedir = ~/.git-template
+
+[core]
+	whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.gitignore-global
+
+[merge]
+	stat = true
+
+[user]
+	name = Graham Christensen
+	email = gchristensen@nationalfield.org
+
+[merge.text]
+	name = Text Cleanup driver
+	driver = ~/bin/merge-text
+
+
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"

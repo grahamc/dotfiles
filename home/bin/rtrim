@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+$finfo = new finfo(FILEINFO_MIME_TYPE);
+for ($i = 1; $i < count($argv); $i++) {
+	$filename = $argv[$i];
+
+	if (!file_exists($filename)) {
+		continue;
+	}
+
+	$mime = $finfo->file($filename);
+	if (substr($mime, 0, 5) !== 'text/') {
+		continue;
+	}
+
+	$contents = file($filename);
+	array_walk($contents, 'cleanline');
+	$file = implode("\n", $contents);
+	$file = trim($file, "\n") . "\n";
+
+
+	file_put_contents($filename, $file);
+}
+
+
+function cleanline(&$line, $key)
+{
+	$line = rtrim($line);
+}

@@ -1,0 +1,7 @@
+*.txt merge=text
+*.php merge=text
+*.css merge=text
+*.js  merge=text
+*.yml merge=text
+*.xml merge=text
+*.sh  merge=text

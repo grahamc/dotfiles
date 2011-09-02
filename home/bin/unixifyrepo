@@ -1,0 +1,2 @@
+#!/bin/sh
+find . -iname '*.php' -or -iname '*.css' -or -iname '*.js' -or -iname '*.yml' -execdir flip -u {} \;

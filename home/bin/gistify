@@ -1,0 +1,95 @@
+#!/usr/bin/env php
+<?php
+
+ini_set('memory_limit', -1);
+
+require_once 'gistifyconfig.php';
+// This file defines two constants:
+// define('GH_USER', '');
+// define('GH_PASS', '');
+
+if (!isset($argv[1])) {
+    echo "gistify <path> -- Upload a file or directory to a Github Gist.\n";
+    echo "\n";
+    echo "gistify ruthlessly uploads files to Github.\n";
+    echo "Note: Gists cannot handle directories, so it'll skip them.\n";
+}
+
+$r = make_request('POST', 'gists', get_request(get_description(), get_files($argv[1])));
+if (isset($r->url)) {
+    echo 'https://gist.github.com' . substr($r->url, strrpos($r->url, '/')) . "\n";
+} else {
+    echo "Error:\n";
+    var_dump($r);
+}
+
+function make_request($type, $uri, $contents)
+{
+    $handle = curl_init('https://api.github.com/' . $uri);
+
+    if ($type == 'POST') {
+        curl_setopt($handle, CURLOPT_POST, true);
+        curl_setopt($handle, CURLOPT_POSTFIELDS, $contents);
+    }
+
+    curl_setopt($handle, CURLOPT_USERPWD, GH_USER . ":" . GH_PASS);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    $r = curl_exec($handle);
+
+    return json_decode($r);
+}
+
+function get_request($description, $files, $public = true)
+{
+    $data = array(
+        'description' => $description,
+        'public' => (bool)$public,
+        'files' => array()
+    );
+
+    foreach ($files as $name => $content) {
+        $data['files'][$name] = array('content' => $content);
+        unset($files[$name]);
+    }
+
+    $data = json_encode($data);
+
+    return $data;
+}
+
+function get_description()
+{
+    $filename = tempnam(sys_get_temp_dir(), 'gistify');
+    $filename = escapeshellarg($filename);
+    //echo shell_exec('env; echo $EDITOR');
+    //die();
+
+    return 'gistify';
+}
+
+function get_files($path)
+{
+    $files = array();
+
+    if (is_file($path)) {
+        $files[] = $path;
+    } else {
+        foreach (glob($path . '/*') as $file) {
+            if (is_file($file) && is_readable($file)) {
+                echo "Using $file\n";
+            } else {
+                echo "Cannot upload $file, not a file or not readable.\n";
+                continue;
+            }
+
+            $files[] = $file;
+        }
+    }
+
+    $contents = array();
+    foreach ($files as $file) {
+        $contents[basename($file)] = file_get_contents($file);
+    }
+
+    return $contents;
+}

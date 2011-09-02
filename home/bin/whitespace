@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find ./ -name "*.php" | xargs rtrim; find ./ -name "*.css" | xargs rtrim; find ./ -name "*.js" | xargs rtrim; find ./ -name "*.yml" | xargs rtrim

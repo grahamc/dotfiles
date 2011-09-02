@@ -1,0 +1,34 @@
+#!/bin/sh
+
+basename=`basename $1`
+
+# Split theirs and ours into separate files so ksdiff can handle it
+git checkout --theirs $1
+cp $1 /tmp/filemerge_theirs_$basename
+
+git checkout --ours $1
+cp $1 /tmp/filemerge_ours_$basename
+
+ksdiff /tmp/filemerge_theirs_$basename /tmp/filemerge_ours_$basename
+
+echo "keep [T]heirs [O]urs [E]dit [N]either"
+read choice
+
+case $choice in
+    'T')
+        git checkout --theirs $1
+        ;;
+    'O')
+        git checkout --ours $1
+        ;;
+    'E')
+        git checkout --conflict=merge $1
+        vim $1
+        ;;
+    *)
+        git checkout --conflict=merge $1
+        exit 1;
+        ;;
+esac
+
+git add $1
