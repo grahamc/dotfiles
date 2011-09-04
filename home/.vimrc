@@ -30,7 +30,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 " Fold around indentations
-set foldmethod=indent
+" set foldmethod=indent
 
 " Highlight tabs and trailing spaces
 set list
@@ -56,10 +56,17 @@ set showcmd
 set laststatus=2
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
 
+" PHP Bits
+let php_sql_query = 1
+let php_htmlInStrings=1
+let php_folding=1
+
 "run file with PHP CLI (CTRL-M)
 autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/php %<CR>
 " PHP parser check (CTRL-L)
 autocmd FileType php noremap <C-L> :!/usr/bin/php -l %<CR>
+
+Bundle 'scrooloose/nerdtree'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'ap/vim-css-color'
