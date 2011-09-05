@@ -66,7 +66,26 @@ autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/php %<CR>
 " PHP parser check (CTRL-L)
 autocmd FileType php noremap <C-L> :!/usr/bin/php -l %<CR>
 
+" Learn how to use HJKL
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
+" Trim all whitespace at the end of lines
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" Sort CSS properties
+:command! SortCSSBraceContents :g#\({\n\)\@<=#.,/}/sort
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+
+Bundle 'bingaman/vim-sparkup'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'ap/vim-css-color'
