@@ -4,6 +4,9 @@ PATH=~/bin:~/pear/bin:$PATH
 # MySQL Bits:
 PATH=$PATH:/usr/local/mysql-5.5.8-osx10.6-x86/bin/:/usr/local/mysql/bin
 
+# Gems on Ubuntu:
+PATH=/var/lib/gems/1.8/bin:$PATH
+
 `hash ctags 2> /dev/null`
 if [[ $? -eq 0 ]]
 then
@@ -63,4 +66,10 @@ alias ls='ls -pFG'
 # Git Prompt Magic
 if [ -x "/etc/git-prompt.sh" ]; then
     [[ $- == *i* ]]   &&   . /etc/git-prompt.sh
+fi
+
+# Source my private settings, nothing special...
+if [ -f ~/.bash_private ]
+then
+    source ~/.bash_private
 fi
