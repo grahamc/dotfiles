@@ -1,9 +1,15 @@
 #!/usr/bin/env php
 <?php
 
+if (isset($argv[1]) && $argv[1] == '--script') {
+    $script = true;
+} else {
+    $script = false;
+}
+
 // Update
 mexec('git fetch --tags --all --prune');
-nvie();
+nvie($script);
 die();
 
 while (true) {
@@ -89,7 +95,7 @@ function get_tags_not_in_master() {
     return $tags;
 }
 
-function nvie() {
+function nvie($fix_it = false) {
 $cmds = array('#!/bin/bash', 'set -e');
 foreach (get_tags_not_in_master() as $tag) {
     echo 'Tag: ' . $tag . ' is not in master.' . "\n";
@@ -139,11 +145,12 @@ foreach (get_topic_branches() as $branch) {
         echo $error . "\n";
     }
 }
-
+if ($fix_it) {
 echo '--' . "\r\n";
 echo "The following script should fix most problems:\n";
 foreach ($cmds as $cmd) {
     echo $cmd . "\n";
+}
 }
 }
 
