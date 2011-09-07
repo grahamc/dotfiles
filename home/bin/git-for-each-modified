@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Disable globbing
+set -f
+
+git status --porcelain |
+    grep -v "^ " |
+    grep -v "?? " |
+    grep -v "^D " |
+    awk '$1 != "D" { sub(/^.../, ""); gsub(/^"|"$/, ""); print }' |
+    xargs -I{} $* '{}'
