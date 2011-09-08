@@ -2,7 +2,3 @@
 
 # Check for merge markers
 git_merge_markers.php
-
-# Trim whitespace
-git diff --name-only --cached | xargs rtrim
-git diff --name-only --cached | xargs git add -f

@@ -17,6 +17,7 @@
 [core]
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore-global
+    attributesfile = ~/.gitattributes-global
 
 [merge]
 	stat = true
@@ -25,9 +26,14 @@
 	name = Graham Christensen
 	email = gchristensen@nationalfield.org
 
-[merge.text]
+# The whitespace filter trims extra whitespace on the right side of files
+[filter "whitespace"]
+    smudge = rtrim
+    clean = cat
+
+[merge "text"]
 	name = Text Cleanup driver
-	driver = ~/bin/merge-text
+	driver = ~/bin/merge-text %A %O %B
 
 
 [difftool]

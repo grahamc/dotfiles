@@ -1,0 +1,7 @@
+*.txt merge=text filter=whitespace
+*.php merge=text filter=whitespace
+*.css merge=text filter=whitespace
+*.js  merge=text filter=whitespace
+*.yml merge=text filter=whitespace
+*.xml merge=text filter=whitespace
+*.sh  merge=text filter=whitespace
