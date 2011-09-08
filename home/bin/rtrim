@@ -1,30 +1,58 @@
 #!/usr/bin/env php
 <?php
 
-$finfo = new finfo(FILEINFO_MIME_TYPE);
-for ($i = 1; $i < count($argv); $i++) {
-	$filename = $argv[$i];
+$stderr = fopen('php://stderr', 'w');
 
-	if (!file_exists($filename)) {
-		continue;
-	}
-
-	$mime = $finfo->file($filename);
-	if (substr($mime, 0, 5) !== 'text/') {
-		continue;
-	}
-
-	$contents = file($filename);
-	array_walk($contents, 'cleanline');
-	$file = implode("\n", $contents);
-	$file = trim($file, "\n") . "\n";
-
-
-	file_put_contents($filename, $file);
+if (!extract_files($argv, $argc, $stderr)) {
+    echo cleanfile('php://stdin');
 }
 
+fclose($stderr);
+
+function extract_files($argv, $argc, $stderr)
+{
+    if ($argc == 1) {
+        return false;
+    }
+
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+
+    for ($i = 1; $i < $argc; $i++) {
+
+        $filename = $argv[$i];
+
+        if (!is_readable($filename)) {
+            fwrite($stderr, "Warn: $filename is not readable. (Skipping)\n");
+            continue;
+        }
+        if (!is_writable($filename)) {
+            fwrite($stderr, "Warn: $filename is not writable. (Skipping)\n");
+            continue;
+        }
+
+        $mime = $finfo->file($filename);
+        if (substr($mime, 0, 5) !== 'text/') {
+            fwrite($stderr, "Warn: $filename is not text. (Skipping)\n");
+            continue;
+        }
+
+        file_put_contents($filename, cleanfile($filename));
+    }
+
+    return true;
+}
+
+function cleanfile($filename)
+{
+    $contents = file($filename);
+    array_walk($contents, 'cleanline');
+    $file = implode("\n", $contents);
+    $file = trim($file, "\n") . "\n";
+
+    return $file;
+}
 
 function cleanline(&$line, $key)
 {
-	$line = rtrim($line);
+    $line = rtrim($line);
 }
