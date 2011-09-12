@@ -1,3 +1,5 @@
 #!/bin/bash
 
-find ./ -name "*.php" | xargs rtrim; find ./ -name "*.css" | xargs rtrim; find ./ -name "*.js" | xargs rtrim; find ./ -name "*.yml" | xargs rtrim
+
+
+find ./ -name '*.html' | xargs rtrim; find ./ -name '*.markdown' | xargs rtrim; find ./ -name "*.php" | xargs rtrim; find ./ -name "*.css" | xargs rtrim; find ./ -name "*.js" | xargs rtrim; find ./ -name "*.yml" | xargs rtrim
