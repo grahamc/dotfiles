@@ -21,4 +21,5 @@ if (!empty($files)) {
         echo ' - ' . substr($file, 0, strpos($file, ': ')) . "\n";
     }
     echo "\n";
+    exit(1);
 }
