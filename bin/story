@@ -1,7 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-while (true) {
+$again = true;
+while (trim($again) !== 'n') {
     $who = readline('As a ');
     $do = readline('I want to ');
     $so = readline('So that I can ');
@@ -12,4 +13,6 @@ while (true) {
 
     file_put_contents('userstories', $block, FILE_APPEND);
     echo "\n";
+    $again = readline('More? (Y/n)');
 }
+exit(0);
