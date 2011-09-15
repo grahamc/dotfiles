@@ -82,6 +82,22 @@ nnoremap k gk
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Sort CSS properties
 :command! SortCSSBraceContents :g#\({\n\)\@<=#.,/}/sort
+" Format CSS Documents, example: :gg=G
+autocmd filetype css setlocal equalprg=csstidy\ -\ --sort_properties=true\ --sort_selectors=true\ --template=low\ --silent=true
+
+" Magic:
+" Sort the CSS brace contents
+" Format it with csstidy
+" Add a space after the :
+" Be merry
+fu! Css()
+    SortCSSBraceContents
+    exe "normal gg=G<Esc>"
+    exe "%s/:/: /"
+    retab
+endf
+command Css call Css()
+
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 
