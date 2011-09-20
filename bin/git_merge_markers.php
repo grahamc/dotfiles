@@ -1,15 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-exec('git diff --name-only --cached', $files, $success);
+exec('git diff --name-only --cached --diff-filter=AMRCT', $files, $success);
 if ($success != 0) {
-	echo "Something went wrong finding modified files:\n";
-	var_dump($files);
-	exit(1);
+    echo "Something went wrong finding modified files:\n";
+    var_dump($files);
+    exit(1);
 }
 
 foreach ($files as &$value) {
-	$value = escapeshellarg($value);
+    $value = escapeshellarg($value);
 }
 
 $files = implode(' ', $files);
