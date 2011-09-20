@@ -16,6 +16,7 @@ set linespace=0
 set number
 set numberwidth=5
 
+set backspace=indent,eol,start
 
 " Auto-wrap text and comments after 120 characters (ct)
 " Insert comment leader after hitting enter while already in a comment (r)
@@ -103,6 +104,7 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'bingaman/vim-sparkup'
 
+Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'ap/vim-css-color'
 Bundle 'mattn/gist-vim'

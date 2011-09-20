@@ -7,6 +7,12 @@ PATH=$PATH:/usr/local/mysql-5.5.8-osx10.6-x86/bin/:/usr/local/mysql/bin
 # Gems on Ubuntu:
 PATH=/var/lib/gems/1.8/bin:$PATH
 
+if [[ -x /usr/local/bin/vim ]]
+then
+    export EDITOR=/usr/local/bin/vim
+fi
+
+
 `hash ctags 2> /dev/null`
 if [[ $? -eq 0 ]]
 then
