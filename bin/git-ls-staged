@@ -1,0 +1,11 @@
+#!/bin/bash
+
+`git rev-parse --verify HEAD > /dev/null 2> /dev/null`
+if [[ $? -eq 0 ]]
+then
+    AGAINST='HEAD'
+else
+    AGAINST='4b825dc642cb6eb9a060e54bf8d69288fbee4904'
+fi
+
+git diff-index --cached --name-only --diff-filter=AMRC $AGAINST
