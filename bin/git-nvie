@@ -197,10 +197,6 @@ function validate_branch_name($branch)
         $errors[] = $branch . ' has an underscore, and should use dashes.';
     }
 
-    if (strpos($branch, '.') !== false) {
-        $errors[] = $branch . ' has a period, and breaks the dev server.';
-    }
-
     if ($branch !== strtolower($branch)) {
         $errors[] = $branch . ' should be all lowercase.';
     }
