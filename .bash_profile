@@ -4,6 +4,9 @@ PATH=~/bin:~/pear/bin:$PATH
 # MySQL Bits:
 PATH=$PATH:/usr/local/mysql-5.5.8-osx10.6-x86/bin/:/usr/local/mysql/bin
 
+# Really only OSX, but...
+export NODE_PATH="/usr/local/lib/node_modules"
+
 # Gems on Ubuntu:
 PATH=/var/lib/gems/1.8/bin:$PATH
 

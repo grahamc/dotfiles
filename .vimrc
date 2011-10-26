@@ -84,7 +84,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Sort CSS properties
 :command! SortCSSBraceContents :g#\({\n\)\@<=#.,/}/sort
 " Format CSS Documents, example: :gg=G
-autocmd filetype css setlocal equalprg=csstidy\ -\ --sort_properties=true\ --sort_selectors=true\ --template=low\ --silent=true
+autocmd filetype css setlocal equalprg=csstidy\ -\ --sort_properties=true\ --sort_selectors=false\ --template=low\ --silent=true
 
 " Magic:
 " Sort the CSS brace contents
@@ -101,6 +101,8 @@ command Css call Css()
 
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+
+Bundle 'bsl/obviousmode'
 
 Bundle 'bingaman/vim-sparkup'
 

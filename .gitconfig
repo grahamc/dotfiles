@@ -30,8 +30,8 @@
 
 # The whitespace filter trims extra whitespace on the right side of files
 [filter "whitespace"]
-    smudge = rtrim
-    clean = cat
+    #smudge = rtrim
+    #clean = cat
 
 [merge "text"]
     name = Text Cleanup driver
