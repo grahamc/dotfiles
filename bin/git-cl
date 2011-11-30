@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Check out the branch you were on before this one
+
+git checkout `git reflog | grep "checkout: moving from" | head -1 | cut -d' ' -f6`
+
