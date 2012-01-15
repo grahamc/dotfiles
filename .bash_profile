@@ -28,13 +28,6 @@ fi
 
 export PATH=$PATH
 
-
-# Editor
-if [ -x "/Applications/TextMate.app/Contents/Resources/mate" ]; then
-    alias mate="/Applications/TextMate.app/Contents/Resources/mate"
-    EDITOR="/Applications/TextMate.app/Contents/Resources/mate"
-fi
-
 # Ruby Version Manager
 [[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"
 
@@ -42,30 +35,9 @@ fi
 `hash brew 2> /dev/null`
 if [[ $? -eq 0 ]]
 then
-	source `brew --prefix git`/etc/bash_completion.d/git-completion.bash
-	PATH=`brew --prefix`/bin:$PATH
-else
-	# MacPorts
-	PATH=/opt/local/bin:/opt/local/sbin:$PATH
+    source `brew --prefix git`/etc/bash_completion.d/git-completion.bash
+    PATH=`brew --prefix`/bin:$PATH
 fi
-
-
-# Aliases
-# Use s1 to set g1's directory
-# Save the results by executing `mdump`
-alias s1='alias g1="cd `pwd`"'
-alias s2='alias g2="cd `pwd`"'
-alias s3='alias g3="cd `pwd`"'
-alias s4='alias g4="cd `pwd`"'
-alias s5='alias g5="cd `pwd`"'
-alias s6='alias g6="cd `pwd`"'
-alias s7='alias g7="cd `pwd`"'
-alias s8='alias g8="cd `pwd`"'
-alias s9='alias g9="cd `pwd`"'
-alias mdump='alias|grep -e "alias g[0-9]"|grep -v "alias s" > ~/.bookmarks'
-alias lma='alias | grep -e "alias g[0-9]"|grep -v "alias s"|sed "s/alias //"'
-touch ~/.bookmarks
-source ~/.bookmarks
 
 # Add color to `ls`
 export CLICOLORS=1
