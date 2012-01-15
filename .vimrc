@@ -102,15 +102,19 @@ command Css call Css()
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 
-Bundle 'bsl/obviousmode'
-
 Bundle 'bingaman/vim-sparkup'
 
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
+Bundle "tpope/vim-cucumber"
+
 Bundle 'ap/vim-css-color'
 Bundle 'mattn/gist-vim'
 let g:gist_clip_command = 'pbcopy'
 
+Bundle 'Lokaltog/vim-powerline'
+let g:Powerline_symbols = 'fancy'
+
 Bundle 'git://git.wincent.com/command-t.git'
 let mapleader = ","
+
