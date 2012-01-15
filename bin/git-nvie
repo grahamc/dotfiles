@@ -304,7 +304,7 @@ function get_organized_branches() {
 }
 
 function get_branches() {
-    $b = mexeclist('git branch -r');
+    $b = mexeclist('git branch -r | grep origin');
     $b = array_map('trim_origin', $b);
 
     return $b;
