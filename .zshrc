@@ -36,9 +36,15 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+# Kill off themes I don't like
 function kill_theme()
 {
     rm $RANDOM_THEME
+}
+
+# Git completion is fucking slow
+function __git_files() {
+    _wanted files expl 'local files' _files
 }
 
 source "${HOME}/.profile"

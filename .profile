@@ -15,10 +15,11 @@ add_path /usr/local/mysql/bin
 
 # Ruby Version Manager
 [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
-[[ -s "${HOME}/.settings_private" ]] && source "${HOME}/.settings_private"
+[[ -s "${HOME}/.settings-private" ]] && source "${HOME}/.settings-private"
 
 # Put the editor in vim mode
 set -o vi
 export EDITOR=vim
 
 export NODE_PATH="/usr/local/lib/node_modules"
+
