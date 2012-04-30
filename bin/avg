@@ -1,0 +1,30 @@
+#!/usr/bin/python
+
+import fileinput, sys, os.path
+
+def avg(inputs):
+    return sum(inputs, 0.0) / len(inputs)
+
+def avgp(inputs):
+    print "%.2f" % avg(inputs)
+
+lim = None
+
+inputs = []
+
+if len(sys.argv) > 1:
+    lim = int(sys.argv[1])
+
+for line in fileinput.input('-'):
+    try:
+        inputs.append(float(line.strip()))
+    except ValueError:
+        continue
+
+    if (lim is not None and len(inputs) >= lim):
+        avgp(inputs)
+        inputs = []
+
+if len(inputs) > 0:
+    avgp(inputs)
+
