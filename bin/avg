@@ -2,6 +2,22 @@
 
 import fileinput, sys, os.path
 
+"""
+Average numbers.
+
+Average all the numbers into a lump:
+# echo "1\n2\n3" | avg
+2
+
+Average the numbers into groups of 2
+# echo "1\n2\n3"| avg 2
+1.5
+3
+
+License: Here, Just Take It.
+
+"""
+
 def avg(inputs):
     return sum(inputs, 0.0) / len(inputs)
 
