@@ -17,7 +17,7 @@
     templatedir = ~/.git-template
 
 [core]
-    whitespace = trailing-space,space-before-tab
+    whitespace = -blank-at-eof, tab-in-indent
     excludesfile = ~/.gitignore-global
     attributesfile = ~/.gitattributes-global
 
@@ -25,8 +25,8 @@
     stat = true
 
 [user]
-    name = Graham Christensen
-    email = gchristensen@nationalfield.org
+	name = Graham Christensen
+	email = gchristensen@nationalfield.org
 
 # The whitespace filter trims extra whitespace on the right side of files
 [filter "whitespace"]
@@ -44,3 +44,6 @@
     tool = Kaleidoscope
 [difftool "Kaleidoscope"]
     cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+
+[include]
+    path = ./.gitconfig-private

@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+require_once 'SymfonyComponents/YAML/sfYamlParser.php';
+
+ob_start();
+include_once $argv[1];
+$contents = ob_get_clean();
+
+$p = new sfYamlParser();
+$out = $p->parse($contents);
+
+echo '<?php return ' . var_export($out, true) . ';';

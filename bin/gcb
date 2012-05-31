@@ -1,0 +1,4 @@
+#!/bin/bash
+
+branch_name="$(b=$(git symbolic-ref -q HEAD); { [ -n "$b" ] && echo ${b##refs/heads/}; } || echo HEAD)"
+echo $branch_name

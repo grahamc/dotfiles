@@ -21,7 +21,7 @@ set backspace=indent,eol,start
 " Auto-wrap text and comments after 120 characters (ct)
 " Insert comment leader after hitting enter while already in a comment (r)
 set formatoptions=ctr
-set textwidth=120
+" set textwidth=120
 set colorcolumn=80,120
 
 " Four space tabs, four space tab stops, use soft tabs.
@@ -60,7 +60,7 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]%{fugitive#statusline()}
 " PHP Bits
 let php_sql_query = 1
 let php_htmlInStrings=1
-let php_folding=1
+" let php_folding=1
 
 "run file with PHP CLI (CTRL-M)
 autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/php %<CR>
@@ -85,6 +85,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 :command! SortCSSBraceContents :g#\({\n\)\@<=#.,/}/sort
 " Format CSS Documents, example: :gg=G
 autocmd filetype css setlocal equalprg=csstidy\ -\ --sort_properties=true\ --sort_selectors=false\ --template=low\ --silent=true
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee tabstop=2 ts=2
 
 " Magic:
 " Sort the CSS brace contents
@@ -99,6 +100,9 @@ fu! Css()
 endf
 command Css call Css()
 
+map <F2> :retab
+
+
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 
@@ -109,12 +113,25 @@ Bundle 'tpope/vim-fugitive'
 Bundle "tpope/vim-cucumber"
 
 Bundle 'ap/vim-css-color'
+Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 let g:gist_clip_command = 'pbcopy'
+
+Bundle 'kchmck/vim-coffee-script'
 
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
-Bundle 'git://git.wincent.com/command-t.git'
+" Bundle 'git://git.wincent.com/command-t.git'
+Bundle "kien/ctrlp.vim"
 let mapleader = ","
 
+Bundle 'vim-scripts/XDebug-DBGp-client-for-PHP'
+Bundle 'beyondwords/vim-twig'
+Bundle 'uggedal/jinja-vim'
+Bundle 'groenewege/vim-less'
+Bundle 'wavded/vim-stylus'
+
+" Bundle 'kana/vim-fakeclip'
+
+au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent execute "!chmod a+x <afile>" | endif | endif

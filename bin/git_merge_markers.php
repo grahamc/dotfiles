@@ -9,6 +9,10 @@ if ($success != 0) {
 }
 
 foreach ($files as &$value) {
+    if (substr($value, -3) == '.md') {
+        $value = '';
+    }
+
     $value = escapeshellarg($value);
 }
 
