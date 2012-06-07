@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "╭─╮   ${1}"
+echo "ಠ_ಠ  /"
+echo "│▕│"
+echo "╰─╯"
+
