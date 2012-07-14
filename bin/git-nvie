@@ -202,7 +202,8 @@ function validate_branch_name($branch)
     }
 
     $bits = explode('-', str_replace('_', '-', $branch));
-    if (!isset($bits[1]) || !is_numeric($bits[1])) {
+    $lastBit = end($bits);
+    if (!is_numeric($lastBit)) {
         $errors[] = $branch . ' is not associated with a ticket.';
     }
 
