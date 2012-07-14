@@ -1,3 +1,0 @@
-#!/bin/sh
-
-csstidy $1 --preserve_css=true --template=low $1

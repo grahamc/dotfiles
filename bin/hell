@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+git fetch origin
+git checkout "${1}"
+git reset --hard "origin/${1}"
+
+git remote add hell git@github.com:nationalfield/nfhell.git
+git fetch hell
+git push hell "${1}"
+git remote rm hell
+
+git push --delete origin "${1}"
+

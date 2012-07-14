@@ -1,0 +1,5 @@
+#!/bin/bash
+
+branch=`gcb`
+
+open "https://github.com/nationalfield/app/compare/${branch}"

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+CBRANCH=`gcb`
+
+git stash
+
+blowup master
+blowup develop
+
+git checkout "$CBRANCH"
