@@ -132,6 +132,9 @@ Bundle 'uggedal/jinja-vim'
 Bundle 'groenewege/vim-less'
 Bundle 'wavded/vim-stylus'
 
+" Handy numbers
+Bundle "myusuf3/numbers.vim"
+
 " Bundle 'kana/vim-fakeclip'
 
 au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent execute "!chmod a+x <afile>" | endif | endif
