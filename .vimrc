@@ -1,5 +1,7 @@
 set nocompatible
 
+set backupskip=/tmp/*,/private/tmp/*"
+
 " Vundle
 filetype off
 set rtp+=~/.vim/vundle.git/
@@ -9,6 +11,11 @@ call vundle#rc()
 set wildmenu
 set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png
 set wildmode=list:longest
+
+" Incremental search. Shows results as you type.
+set incsearch
+" Show all matches for a search
+set hlsearch
 
 " Don't add additional pixels in between lines
 set linespace=0
@@ -64,8 +71,6 @@ let php_htmlInStrings=1
 
 "run file with PHP CLI (CTRL-M)
 autocmd FileType php noremap <C-M> :w!<CR>:!/usr/bin/php %<CR>
-" PHP parser check (CTRL-L)
-autocmd FileType php noremap <C-L> :!/usr/bin/php -l %<CR>
 
 " Learn how to use HJKL
 nnoremap <up> <nop>
@@ -86,6 +91,7 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Format CSS Documents, example: :gg=G
 autocmd filetype css setlocal equalprg=csstidy\ -\ --sort_properties=true\ --sort_selectors=false\ --template=low\ --silent=true
 autocmd BufNewFile,BufRead *.coffee set filetype=coffee tabstop=2 ts=2
+au BufRead,BufNewFile *.go set filetype=go tabstop=2 ts=2
 
 " Magic:
 " Sort the CSS brace contents
@@ -106,6 +112,8 @@ map <F2> :retab
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 
+Bundle 'SirVer/ultisnips'
+
 Bundle 'bingaman/vim-sparkup'
 
 Bundle 'tpope/vim-git'
@@ -122,7 +130,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'fancy'
 
-" Bundle 'git://git.wincent.com/command-t.git'
 Bundle "kien/ctrlp.vim"
 let mapleader = ","
 
@@ -136,5 +143,7 @@ Bundle 'wavded/vim-stylus'
 Bundle "myusuf3/numbers.vim"
 
 " Bundle 'kana/vim-fakeclip'
+Bundle 'rantenki/vim-openscad'
 
 au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent execute "!chmod a+x <afile>" | endif | endif
+autocmd BufWritePre * :%s/\s\+$//e

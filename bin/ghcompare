@@ -1,5 +1,6 @@
 #!/bin/bash
 
+origin=`git remote -v | head -1 | cut -d":" -f2 | cut -d"." -f1`
 branch=`gcb`
 
-open "https://github.com/nationalfield/app/compare/${branch}"
+open "https://github.com/${origin}/compare/${branch}"
