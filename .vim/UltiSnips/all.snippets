@@ -1,0 +1,47 @@
+snippet php "Open PHP" b
+<?php
+
+$0
+endsnippet
+
+snippet class "defines class" b
+class ${1}${2/(.*)/(?1: extends :)/}${2:x}${3/(.*)/(?1: implements :)/}${3:y}
+{
+    $0
+}
+endsnippet
+
+snippet pub "Create a public method" b
+public function ${1:function_name}(${2:})
+{
+    $3
+}
+$0
+endsnippet
+
+snippet pro "Create a protected method" b
+protected function ${1:function_name}(${2:})
+{
+    $3
+}
+$0
+endsnippet
+
+snippet tc "Create a PHPUnit TestCase" b
+<?php
+
+${1/(.*)/(?1:namespace :)/}${1:x}
+class ${2:class_name} extends PHPUnit_Framework_TestCase
+{
+    $0
+}
+endsnippet
+
+snippet tm "Create a PHPUnit test method" b
+public function test${1:FooBar}()
+{
+    $2
+}
+
+$0
+endsnippet
