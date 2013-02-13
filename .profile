@@ -28,10 +28,13 @@ export OPSCODE_USER="grahamc"
 alias c="composer"
 alias activate=". venv/bin/activate"
 
-alias nf="cd ~/projects/app/"
+alias nf="cd ~/projects/nf/"
+alias app="nf; cd app/"
+alias labs="nf; cd labs/"
+alias mc="nf; cd missioncontrol"
+alias nfc="nf; cd chef; rvm system"
+alias zk="cd ~/projects/zk/"
+alias bb="zk; cd bigbrother/"
+alias rk="zk; cd railskid/; rvm ruby-1.9.3-p125"
 
 
-# MSP430
-add_path /opt/msp430-gcc-4.4.5/bin;
-
-add_path /opt/mspgcc/bin

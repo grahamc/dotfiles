@@ -109,7 +109,6 @@ command Css call Css()
 map <F2> :retab
 
 
-Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'SirVer/ultisnips'
@@ -147,3 +146,6 @@ Bundle 'rantenki/vim-openscad'
 
 au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent execute "!chmod a+x <afile>" | endif | endif
 autocmd BufWritePre * :%s/\s\+$//e
+
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+
