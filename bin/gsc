@@ -1,0 +1,5 @@
+#!/bin/bash
+
+scp $1 eggbert:sites/gsc.io/public/$2
+ssh eggbert chmod 755 sites/gsc.io/public/$2
+open http://gsc.io/$2
