@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo `dirname \`type -p $0\``
