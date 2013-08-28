@@ -1,2 +1,0 @@
-#!/bin/bash
-ssh eggbert "cd sites/giftensen.com; git pull; php build.php"

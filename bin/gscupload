@@ -1,3 +1,0 @@
-#!/bin/sh
-
-ssh yakko curl -o "~/grahamc.com/main/public/${2}" "${1}"
